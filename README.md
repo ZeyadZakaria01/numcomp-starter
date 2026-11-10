@@ -281,5 +281,8 @@ and include the plots in your report.
 - Allowed: the standard library; SymPy only via `expr.py`; matplotlib/NumPy
   only in `plot.py`. Not allowed: `decimal`, `round()`, `Fraction.__round__`,
   `scipy`, `mpmath`, `eval`/`exec`, SymPy solvers. Submissions are scanned.
-- Code from other teams, previous years or AI tools that you cannot explain and
-  modify yourself in the oral counts as not yours.
+- AI tools (ChatGPT, Copilot, Claude, Cursor, …) must not be used to write any
+  part of the code or the report; using them, or copying from other teams or
+  previous years, is cheating. Submissions are compared with each other and
+  with AI-generated solutions, and similar ones are examined in the oral. Code
+  you cannot explain and modify yourself in the oral counts as not yours.
