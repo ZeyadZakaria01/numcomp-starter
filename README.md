@@ -42,9 +42,11 @@ exception, have one (`value`). Inputs and expected outputs are in
 **Do not edit the provided files**: the grader replaces them. You may add
 helper modules inside `numcomp/`.
 
-Push this folder to your team's GitHub repository; the included workflow runs
-the public tests on every push. Each member commits under their own account:
-the history is used in the oral discussion.
+Create your team's repository from this template: **Use this template →
+Create a new repository → Private**. Do not fork it: a fork of a public
+repository is public. Add `ZeyadZakaria01` as a collaborator. The included
+workflow runs the public tests on every push. Each member commits under their
+own account: the history is used in the oral discussion.
 
 Suggested order (each step builds on the previous one):
 
