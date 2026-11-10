@@ -36,11 +36,24 @@ PARAMS = [
 def test_case(case, level):
     want = case["expect"]
     if "error" in want:
-        with pytest.raises(ERRORS[want["error"]]) as caught:
-            run(case)
+        cls = ERRORS[want["error"]]
+        expected = f"expected {want['error']} ({want['message']!r})"
+        try:
+            got = run(case)
+        except Exception as exc:
+            if type(exc) is not cls:
+                raise AssertionError(f"{case['input']}: {expected}, got {type(exc).__name__}: {exc}") from exc
+            caught = exc
+        else:
+            if hasattr(got, "stop_reason"):
+                got = f"root={got.root!r}, stop_reason={got.stop_reason!r}"
+            pytest.fail(f"{case['input']}: {expected}, but nothing was raised (returned {got})")
         if "steps_len" in want:
-            assert hasattr(caught.value, "steps"), "exception is missing completed steps"
-            assert len(caught.value.steps) == want["steps_len"]
+            rows = getattr(caught, "steps", None)
+            assert rows is not None, f"{case['input']}: the exception has no .steps (rows completed before the error)"
+            assert len(rows) == want["steps_len"], (
+                f"{case['input']}: exception .steps has {len(rows)} rows, expected {want['steps_len']} "
+                "(only rows completed before the error)")
         return
     got = run(case)
     if case["kind"] != "root":

@@ -252,6 +252,8 @@ digits(E) = `None` if *E* is `None`, *cap* if 0, 0 if inf, otherwise
 without a nonzero `true_root`.
 
 Errors are documented in `errors.py`; invalid arguments raise `ValueError`.
+Raise exactly the class named here, not a subclass of it (tests check the
+exact type).
 When a method raises during its iterations, attach the completed rows
 (`exc.steps`). Messages say what went wrong and where, e.g.
 `f(xl) = 5.7 and f(xu) = 4.1 have the same sign: [5, 6] does not bracket a root`.
